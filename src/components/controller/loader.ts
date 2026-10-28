@@ -1,4 +1,10 @@
     type RequestOptions = Record<string, string>;
+    interface RequestParams {
+        endpoint: string;
+        options?: RequestOptions;
+    }
+    
+
     class Loader {
         private readonly baseLink: string;
         private readonly options: RequestOptions;
@@ -6,6 +12,15 @@
         constructor(baseLink: string, options: RequestOptions) {
             this.baseLink = baseLink;
             this.options = options;
+        }
+
+        getResp<T>(
+            { endpoint, options = {} }: RequestParams,
+            callback: (data: T) => void = () => {
+                console.error('No callback for GET response');
+            },
+        ): void {
+            this.load<T>('GET', endpoint, callback, options);
         }
 
         errorHandler(res: Response): Response {
@@ -29,7 +44,11 @@
         return url.slice(0, -1);
     }
 
-    load(method, endpoint, callback, options = {}) {
+    load<T>(method: string,
+        endpoint: string,
+        callback: (data: T) => void,
+        options: RequestOptions = {},
+        ): void {
         fetch(this.makeUrl(options, endpoint), { method })
             .then(this.errorHandler)
             .then((res) => res.json())
