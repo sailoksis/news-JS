@@ -24,3 +24,8 @@ export interface NewsArticlesResponse {
     totalResults: number;
     articles: NewsArticle[];
 }
+
+export type NewsCardData = Pick<
+    NewsArticle,
+    'source' | 'author' | 'title' | 'description' | 'url' | 'urlToImage' | 'publishedAt'
+>;
