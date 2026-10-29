@@ -9,7 +9,7 @@ interface NewsQueryOptions {
 type OptionalNewsQueryOptions = Partial<NewsQueryOptions>;
 
 class AppController extends AppLoader {
-    getSources(callback: (data: NewsSourcesResponse) => void): void {
+    public getSources(callback: (data: NewsSourcesResponse) => void): void {
         super.getResp<NewsSourcesResponse>(
             {
                 endpoint: 'sources',
@@ -18,7 +18,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: (data: NewsArticlesResponse) => void): void {
+    public getNews(e: Event, callback: (data: NewsArticlesResponse) => void): void {
         const newsContainer = e.currentTarget;
         if (!(newsContainer instanceof Element) || !(e.target instanceof Element)) {
             return;
