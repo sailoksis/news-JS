@@ -15,7 +15,7 @@ class App {
 
         if (sourcesElement) {
             sourcesElement.addEventListener('click', (e) =>
-                this.controller.getNews(e, (data) => this.view.drawNews(data)),
+                this.controller.getNews(e, (data) => this.view.drawNews(data))
             );
         }
         this.controller.getSources((data) => this.view.drawSources(data));

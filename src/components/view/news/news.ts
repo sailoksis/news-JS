@@ -20,9 +20,7 @@ class News {
             }
             const newsPhoto = newsClone.querySelector<HTMLElement>('.news__meta-photo');
             if (newsPhoto) {
-                newsPhoto.style.backgroundImage = `url(${
-                    item.urlToImage || 'img/news_placeholder.jpg'
-                })`;
+                newsPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
             }
             const newsAuthor = newsClone.querySelector('.news__meta-author');
             if (newsAuthor) {
@@ -30,11 +28,7 @@ class News {
             }
             const newsDate = newsClone.querySelector('.news__meta-date');
             if (newsDate) {
-                newsDate.textContent = item.publishedAt
-                    .slice(0, 10)
-                    .split('-')
-                    .reverse()
-                    .join('-');
+                newsDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
             }
 
             const newsTitle = newsClone.querySelector('.news__description-title');
@@ -51,7 +45,7 @@ class News {
             if (newsDescription) {
                 newsDescription.textContent = item.description;
             }
-            
+
             const newsLink = newsClone.querySelector('.news__read-more a');
             if (newsLink) {
                 newsLink.setAttribute('href', item.url);

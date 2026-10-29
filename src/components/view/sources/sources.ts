@@ -5,7 +5,7 @@ class Sources {
     draw(data: NewsSource[]): void {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector<HTMLTemplateElement>('#sourceItemTemp');
-        
+
         if (!sourceItemTemp) {
             throw new Error('Sources template not found');
         }
@@ -17,20 +17,20 @@ class Sources {
 
             if (sourceName) {
                 sourceName.textContent = item.name;
-        }
-        const sourceItem = sourceClone.querySelector('.source__item');
+            }
+            const sourceItem = sourceClone.querySelector('.source__item');
 
-        if (sourceItem && item.id !== null) {
-            sourceItem.setAttribute('data-source-id', item.id);
-        }
+            if (sourceItem && item.id !== null) {
+                sourceItem.setAttribute('data-source-id', item.id);
+            }
             fragment.append(sourceClone);
         });
 
         const sourcesContainer = document.querySelector('.sources');
 
-if (sourcesContainer) {
-    sourcesContainer.append(fragment);
-}
+        if (sourcesContainer) {
+            sourcesContainer.append(fragment);
+        }
     }
 }
 

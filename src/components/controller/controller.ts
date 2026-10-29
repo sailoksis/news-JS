@@ -16,7 +16,7 @@ class AppController extends AppLoader {
         if (!(newsContainer instanceof Element) || !(e.target instanceof Element)) {
             return;
         }
-        
+
         let target: Element | null = e.target;
 
         while (target && target !== newsContainer) {
