@@ -1,7 +1,7 @@
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+    color: #f8fafc;
+    background: #111827;
+    font-family: Arial, sans-serif;
 }
 
 header {
@@ -9,8 +9,9 @@ header {
 }
 
 header h1 {
-    font-size: 40px;
-    font-weight: 800;
+    font-size: clamp(28px, 5vw, 40px);
+    font-weight: 700;
+    letter-spacing: -1px;
 }
 
 footer {
