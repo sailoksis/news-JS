@@ -2,7 +2,7 @@ enum HttpMethod {
     GET = 'GET',
 }
 
-type RequestOptions = Record<string, string>;
+type RequestOptions = Readonly<Record<string, string>>;
 interface RequestParams {
     endpoint: string;
     options?: RequestOptions;

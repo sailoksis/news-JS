@@ -1,6 +1,13 @@
 import type { NewsSourcesResponse, NewsArticlesResponse } from '../../types/news';
 import AppLoader from './appLoader';
 
+interface NewsQueryOptions {
+    sources: string;
+    language: string;
+}
+
+type OptionalNewsQueryOptions = Partial<NewsQueryOptions>;
+
 class AppController extends AppLoader {
     getSources(callback: (data: NewsSourcesResponse) => void): void {
         super.getResp<NewsSourcesResponse>(
@@ -27,12 +34,13 @@ class AppController extends AppLoader {
                 }
                 if (newsContainer.getAttribute('data-source') !== sourceId) {
                     newsContainer.setAttribute('data-source', sourceId);
+                    const options: OptionalNewsQueryOptions = {
+                        sources: sourceId,
+                    };
                     super.getResp<NewsArticlesResponse>(
                         {
                             endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
-                            },
+                            options,
                         },
                         callback
                     );
